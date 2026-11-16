@@ -3,10 +3,12 @@
 # Optional fields: role (e.g. "Master's internship, co-supervised", "informal guidance"), url (a page about them).
 
 - name: Jinchang Li
+  role: predoctoral researcher
   institution: Princeton University
   year: 2026
 
 - name: Lohenn Fiol
+  role: Master's internship, co-supervised
   institution: IGE, Grenoble
   year: 2024
 
