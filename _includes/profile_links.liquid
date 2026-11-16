@@ -1,0 +1,34 @@
+{% comment %}
+  Row of labelled links shown on the landing page. Edit the list in _data/links.yml.
+{% endcomment %}
+<style>
+  .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    color: var(--global-text-color);
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+  .profile-links a:hover {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+  }
+  .profile-links i {
+    font-size: 1.15rem;
+  }
+</style>
+<nav class="profile-links" aria-label="Profiles">
+  {% for link in site.data.links %}
+    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"><i class="{{ link.icon }}"></i>{{ link.name }}</a>
+  {% endfor %}
+</nav>

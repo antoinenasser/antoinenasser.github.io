@@ -1,0 +1,28 @@
+# Links shown under the bio on the landing page, in this order.
+# icon: a Font Awesome class (https://fontawesome.com/search?ic=free) such as "fa-brands fa-github"
+#       or an Academicons class (https://jpswalsh.github.io/academicons/) such as "ai ai-orcid".
+
+- name: GitHub
+  url: https://github.com/antoinenasser
+  icon: fa-brands fa-github
+
+- name: BVP & PhD code
+  url: https://github.com/antoine-182
+  icon: fa-solid fa-code
+
+- name: Google Scholar
+  # Temporary author search: replace with your profile URL (https://scholar.google.com/citations?user=...)
+  url: https://scholar.google.com/citations?view_op=search_authors&mauthors=Antoine-Alexis+Nasser
+  icon: ai ai-google-scholar
+
+- name: LinkedIn
+  url: https://www.linkedin.com/in/nasserantoine/
+  icon: fa-brands fa-linkedin
+
+- name: ORCID
+  url: https://orcid.org/0000-0001-6757-2650
+  icon: ai ai-orcid
+
+# - name: Email
+#   url: mailto:you@example.com
+#   icon: fa-solid fa-envelope

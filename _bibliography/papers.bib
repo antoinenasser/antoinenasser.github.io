@@ -1,0 +1,84 @@
+---
+---
+
+% Publications shown on the publications page.
+% Useful fields:
+%   selected   true shows the paper on the landing page
+%   preview    an image, GIF or MP4 file name, placed in assets/img/publication_preview/
+%   abbr       badge on the left, colors and links in _data/venues.yml
+%   code, pdf, slides, poster, website, video, hal, arxiv: extra buttons
+
+@article{nasser2026design,
+  abbr     = {arXiv},
+  title    = {Design principles for stable and generalizable data-driven discretizations for solving linear hyperbolic conservation laws},
+  author   = {Nasser, Antoine-Alexis and Adcroft, Alistair},
+  journal  = {arXiv preprint},
+  year     = {2026},
+  arxiv    = {2606.17497},
+  code     = {https://github.com/antoine-182/design-principles-ML-FV-schemes-JCP2026},
+  abstract = {We investigate data-driven finite-volume discretizations of the linear advection equation in one dimension. Neural networks for use as numerical advection schemes are constructed adhering to first principles of numerical analysis, allowing us to examine how normalization, training data, and architectural choices influence stability, accuracy, and shape preservation. (i) We show that reconstruction based solely on cell averages leads to a multi-valued learning problem, explaining limited generalization when training data includes widely different curvature regimes. (ii) Numerical stability and good generalization can be achieved by enforcing semilinearity (Lin and Rood 1998) through local stencil-scale normalization, which ensures invariance under affine transformations of the inputs. (iii) A new data-driven flux limiter is introduced that outperforms the classical 'OSTVD3' (Arora and Roe, 1997) scheme in shape preservation by introducing mild antidiffusion in near-linear regimes, while higher-order reconstruction in non-monotonic regions provides limited benefit. (iv) We show that training on polynomial profiles yields stable, high-order accurate discretizations, with the polynomial degree controlling the formal order of accuracy. Together, these results illustrate how the representational, architectural, and training choices govern the stability and generalization of data-driven finite-volume schemes for linear advection.},
+  preview  = {design_principles.png},
+  selected = {true},
+  bibtex_show = {true}
+}
+
+@article{nasser2026porous,
+  abbr     = {Preprint},
+  title    = {Porous Cavities and Smooth Boundaries: Brinkman Volume Penalization for Ice-Shelf-Ocean Interactions in Earth System Models},
+  author   = {Nasser, Antoine-Alexis and Jourdain, Nicolas C. and Mathiot, Pierre and Fiol, Lohenn and Madec, Gurvan and Debreu, Laurent},
+  journal  = {ESS Open Archive (preprint)},
+  year     = {2026},
+  doi      = {10.22541/essoar.176677323.32970185/v2},
+  code     = {https://github.com/antoine-182/bvp_isomip_Nasser2026},
+  abstract = {Numerical ocean models remain essential for investigating ice-shelf-ocean interaction to estimate the fate of the Antarctic Ice Sheet in a warming climate. A persistent challenge in z-coordinate ocean models is the artificial stepwise representation of cavity geometries, which induces excessive diapycnal mixing and numerical noise beneath the ice draft. Here, we assess the potential of the Brinkman Volume Penalization (BVP) method for ice-ocean modeling, in which the ice-ocean interface is replaced by a porous region that is partially ocean and partially ice. The benefits of penalization are evaluated in a z-coordinate ocean model using an idealized ISOMIP+ configuration (Asay-Davis et al. 2016) under both warm and cold scenarios. First, smoothing the cavity with the BVP acts as an effective local increase in vertical resolution, improving ocean circulation near the grounding line and allowing strong basal melt at the ice-shelf base. Second, we show that the distribution of heat and meltwater within the penalized region reduces spurious mixing, leading to colder and fresher ice-shelf waters and a strengthened overturning circulation. Hence, the BVP approach provides a promising alternative to a Losch (2008) melt-layer formulation, for which similar noise reduction requires prescribing a melt-layer depth that is too large and leads to excessive mixing. Finally, we show that at least four vertical grid cells are required to resolve grounding-zone overturning and to obtain strong and consistent basal melt patterns. In summary, these results provide practical guidance for improving the numerical treatment of ice-shelf cavities in OGCMs.},
+  additional_info = {. Data: [NEMO simulations](https://doi.org/10.5281/zenodo.17774098), [Python/Jupyter scripts](https://doi.org/10.5281/zenodo.17810206)},
+  preview  = {porous_cavities.png},
+  selected = {true},
+  bibtex_show = {true}
+}
+
+@article{delavergne2026tidal,
+  abbr     = {JAMES},
+  title    = {Effects of Improved Tidal Mixing in NEMO One-Degree Global Ocean Model},
+  author   = {{de Lavergne}, Casimir and Rathore, Saurabh and Madec, Gurvan and Sallée, Jean-Baptiste and Ethé, Christian and Nasser, Antoine and Millet, Bruno and Vancoppenolle, Martin},
+  journal  = {Journal of Advances in Modeling Earth Systems},
+  volume   = {18},
+  number   = {2},
+  pages    = {e2024MS004824},
+  year     = {2026},
+  month    = {feb},
+  doi      = {10.1029/2024MS004824},
+  hal      = {hal-05568692},
+  abstract = {Diapycnal mixing in the ocean interior has diverse numerical representations in current global ocean models. These representations affect the simulated transport and storage of oceanic tracers in ways that remain little studied. Here we present the impacts of three different tidal mixing representations in thousand-year-long simulations with the NEMO global ocean model at one-degree resolution. The first model experiment includes local bottom-intensified mixing at internal tide generation sites and a constant background diffusivity. The second explicitly includes both local and remote tidal mixing, with no background diffusivity. The third experiment is identical to the second but has the added contribution of bottom-trapped (subinertial) internal tides, known to be important in polar regions. The three simulations show broadly similar circulation and stratification but important regional differences. Explicit representation of remote tidal mixing strengthens the Atlantic Meridional Overturning Circulation by up to 1.5 Sv. Inclusion of bottom-trapped internal tides reduces heat reaching Antarctica by eroding Circumpolar Deep Water at southern high latitudes, and reduces the mean age of the global deep (>2 km) ocean by 10%. The results call for more observational constraints on polar ocean mixing, and point to multi-faceted climatic repercussions of tidal mixing representations.},
+  bibtex_show = {true}
+}
+
+@phdthesis{nasser2023thesis,
+  abbr     = {PhD},
+  title    = {Advancing the representation of flows along topography in z-coordinate ocean models},
+  author   = {Nasser, Antoine-Alexis},
+  school   = {Sorbonne Université},
+  year     = {2023},
+  month    = {sep},
+  hal      = {tel-04399405},
+  bibtex_show = {true}
+}
+
+@article{nasser2023sliding,
+  abbr     = {JAMES},
+  title    = {Sliding or Stumbling on the Staircase: Numerics of Ocean Circulation Along Piecewise-Constant Coastlines},
+  author   = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent and Lemarié, Florian and Blayo, Eric},
+  journal  = {Journal of Advances in Modeling Earth Systems},
+  volume   = {15},
+  number   = {5},
+  pages    = {e2022MS003594},
+  year     = {2023},
+  month    = {may},
+  doi      = {10.1029/2022MS003594},
+  hal      = {hal-03951704},
+  code     = {https://github.com/antoine-182/staircasePlotpython},
+  abstract = {Coastlines in most ocean general circulation models are piecewise constant. Accurate representation of boundary currents along staircase-like coastlines is a long-standing issue in ocean modeling. Pioneering work by Adcroft and Marshall (1998) revealed that artificial indentation of model coastlines, obtained by rotating the numerical mesh within an idealized square basin, generates a spurious form drag that slows down the circulation. Here, we revisit this problem and show how this spurious drag may be eliminated. First, we find that physical convergence to spatial resolution (i.e., the main characteristics of the flow are insensitive to the increase of the mesh resolution) allows simulations to become independent of the mesh orientation. An advection scheme with a wider stencil also reduces sensitivity to mesh orientation from coarser resolution. Second, we show that indented coastlines behave as straight and slippery shores when a true mirror boundary condition on the flow is imposed. This finding applies to both symmetric and rotational-divergence formulations of the stress tensor, and to both flux and vector-invariant forms of the equations. Finally, we demonstrate that the detachment of a vortex flowing past an outgoing corner of the coastline is missed with a free-slip (zero vorticity) condition at the corner. These results provide guidance for a better numerical treatment of coastlines (and isobaths) in ocean general circulation models.},
+  preview  = {staircase.png},
+  selected = {true},
+  bibtex_show = {true}
+}

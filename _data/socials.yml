@@ -1,0 +1,7 @@
+# Profile IDs given to search engines in the page metadata. The visible links on the landing page are in _data/links.yml.
+# Full list of supported keys: https://github.com/george-gca/jekyll-socials
+# email: you@example.com
+orcid_id: 0000-0001-6757-2650
+# scholar_userid: XXXXXXXXXXXX # the `user=` part of your Google Scholar profile URL (also update _data/links.yml)
+github_username: antoinenasser
+linkedin_username: nasserantoine

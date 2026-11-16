@@ -1,0 +1,6 @@
+# Link co-authors' names in your publication lists to their websites.
+# Keys are lowercase last names; `firstname` lists every spelling used in the .bib files.
+#
+# "adcroft":
+#   - firstname: ["Alistair", "A."]
+#     url: https://example.com

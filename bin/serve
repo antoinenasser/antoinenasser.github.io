@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Preview the site locally at http://localhost:4000
+# Uses Homebrew's Ruby 3.3 (same major version as the GitHub build) and the
+# project-local Python venv (.venv) that provides `jupyter nbconvert`.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PWD/.venv/bin:$PATH"
+# The macOS 27 SDK shipped with these Command Line Tools breaks native gem builds;
+# pin the 26.5 SDK when (re)installing gems.
+export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
+bundle check >/dev/null || bundle install
+exec bundle exec jekyll serve --livereload "$@"
