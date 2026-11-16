@@ -14,6 +14,7 @@
   author   = {Nasser, Antoine-Alexis and Adcroft, Alistair},
   journal  = {arXiv preprint},
   year     = {2026},
+  month    = {jun},
   arxiv    = {2606.17497},
   code     = {https://github.com/antoine-182/design-principles-ML-FV-schemes-JCP2026},
   abstract = {We investigate data-driven finite-volume discretizations of the linear advection equation in one dimension. Neural networks for use as numerical advection schemes are constructed adhering to first principles of numerical analysis, allowing us to examine how normalization, training data, and architectural choices influence stability, accuracy, and shape preservation. (i) We show that reconstruction based solely on cell averages leads to a multi-valued learning problem, explaining limited generalization when training data includes widely different curvature regimes. (ii) Numerical stability and good generalization can be achieved by enforcing semilinearity (Lin and Rood 1998) through local stencil-scale normalization, which ensures invariance under affine transformations of the inputs. (iii) A new data-driven flux limiter is introduced that outperforms the classical 'OSTVD3' (Arora and Roe, 1997) scheme in shape preservation by introducing mild antidiffusion in near-linear regimes, while higher-order reconstruction in non-monotonic regions provides limited benefit. (iv) We show that training on polynomial profiles yields stable, high-order accurate discretizations, with the polynomial degree controlling the formal order of accuracy. Together, these results illustrate how the representational, architectural, and training choices govern the stability and generalization of data-driven finite-volume schemes for linear advection.},
@@ -53,6 +54,18 @@
   bibtex_show = {true}
 }
 
+@article{zanna2025framework,
+  abbr     = {arXiv},
+  title    = {A Framework for Hybrid Physics-AI Coupled Ocean Models},
+  author   = {Zanna, Laure and Gregory, William and Perezhogin, Pavel and Sane, Aakash and Zhang, Cheng and Adcroft, Alistair and Bushuk, Mitch and Fernandez-Granda, Carlos and Reichl, Brandon and Balwada, Dhruv and Busecke, Julius and Chapman, William and Connolly, Alex and Du, Danni and Everard, Kelsey and Falasca, Fabrizio and Falga, Renaud and Kamm, David and Meunier, Etienne and Liu, Qi and Nasser, Antoine and Pudig, Matthew and Shao, Andrew and Simpson, Julia L. and Vogt, Linus and Wu, Jiarong},
+  journal  = {arXiv preprint},
+  year     = {2025},
+  month    = {oct},
+  arxiv    = {2510.22676},
+  abstract = {Climate simulations, at all grid resolutions, rely on approximations that encapsulate the forcing due to unresolved processes on resolved variables, known as parameterizations. Parameterizations often lead to inaccuracies in climate models, with significant biases in the physics of key climate phenomena. Advances in artificial intelligence (AI) are now directly enabling the learning of unresolved processes from data to improve the physics of climate simulations. Here, we introduce a flexible framework for developing and implementing physics- and scale-aware machine learning parameterizations within climate models. We focus on the ocean and sea-ice components of a state-of-the-art climate model by implementing a spectrum of data-driven parameterizations, ranging from complex deep learning models to more interpretable equation-based models. Our results showcase the viability of AI-driven parameterizations in operational models, advancing the capabilities of a new generation of hybrid simulations, and include prototypes of fully coupled atmosphere-ocean-sea-ice hybrid simulations. The tools developed are open source, accessible, and available to all.},
+  bibtex_show = {true}
+}
+
 @phdthesis{nasser2023thesis,
   abbr     = {PhD},
   title    = {Advancing the representation of flows along topography in z-coordinate ocean models},
@@ -80,5 +93,32 @@
   abstract = {Coastlines in most ocean general circulation models are piecewise constant. Accurate representation of boundary currents along staircase-like coastlines is a long-standing issue in ocean modeling. Pioneering work by Adcroft and Marshall (1998) revealed that artificial indentation of model coastlines, obtained by rotating the numerical mesh within an idealized square basin, generates a spurious form drag that slows down the circulation. Here, we revisit this problem and show how this spurious drag may be eliminated. First, we find that physical convergence to spatial resolution (i.e., the main characteristics of the flow are insensitive to the increase of the mesh resolution) allows simulations to become independent of the mesh orientation. An advection scheme with a wider stencil also reduces sensitivity to mesh orientation from coarser resolution. Second, we show that indented coastlines behave as straight and slippery shores when a true mirror boundary condition on the flow is imposed. This finding applies to both symmetric and rotational-divergence formulations of the stress tensor, and to both flux and vector-invariant forms of the equations. Finally, we demonstrate that the detachment of a vortex flowing past an outgoing corner of the coastline is missed with a free-slip (zero vorticity) condition at the corner. These results provide guidance for a better numerical treatment of coastlines (and isobaths) in ocean general circulation models.},
   preview  = {staircase.png},
   selected = {true},
+  bibtex_show = {true}
+}
+
+@article{ebadi2019insights,
+  abbr     = {JPCC},
+  title    = {Insights into the Li-Metal/Organic Carbonate Interfacial Chemistry by Combined First-Principles Theory and X-ray Photoelectron Spectroscopy},
+  author   = {Ebadi, Mahsa and Nasser, Antoine and Carboni, Marco and Younesi, Reza and Marchiori, Cleber F. N. and Brandell, Daniel and Araujo, C. Moyses},
+  journal  = {The Journal of Physical Chemistry C},
+  volume   = {123},
+  number   = {1},
+  pages    = {347--355},
+  year     = {2019},
+  doi      = {10.1021/acs.jpcc.8b07679},
+  bibtex_show = {true}
+}
+
+@article{reynaud2018enhancing,
+  abbr     = {AOM},
+  title    = {Enhancing Reproducibility and Nonlocal Effects in Film-Coupled Nanoantennas},
+  author   = {Reynaud, Clément A. and Duché, David and Le Rouzo, Judikaël and Nasser, Antoine and Nony, Laurent and Pourcin, Florent and Margeat, Olivier and Ackermann, Jörg and Berginc, Gerard and Nijhuis, Christian A. and Escoubas, Ludovic and Simon, Jean-Jacques},
+  journal  = {Advanced Optical Materials},
+  volume   = {6},
+  number   = {23},
+  pages    = {1801177},
+  year     = {2018},
+  month    = {dec},
+  doi      = {10.1002/adom.201801177},
   bibtex_show = {true}
 }

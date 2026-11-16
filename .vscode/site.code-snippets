@@ -1,0 +1,89 @@
+{
+  // Type the prefix in a Markdown file and press Tab (or Enter) to insert the block.
+  // Tab then jumps between the fields to fill in.
+  "News item (whole file)": {
+    "scope": "markdown",
+    "prefix": "news",
+    "body": [
+      "---",
+      "layout: post",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "inline: true",
+      "related_posts: false",
+      "---",
+      "",
+      "${1:Text of the news} [${2:link text}](${3:https://...})"
+    ],
+    "description": "Front matter and text for a file in _news/"
+  },
+  "Article (whole file)": {
+    "scope": "markdown",
+    "prefix": "article",
+    "body": [
+      "---",
+      "layout: post",
+      "title: ${1:Title}",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "description: ${2:One sentence shown in the list of notes.}",
+      "tags: ${3:how-to}",
+      "categories: notes",
+      "related_posts: false",
+      "toc:",
+      "  sidebar: left",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Front matter for a file in _posts/"
+  },
+  "Image": {
+    "scope": "markdown",
+    "prefix": "image",
+    "body": [
+      "{% include figure.liquid path=\"assets/img/posts/${1:file.png}\" class=\"img-fluid rounded z-depth-1\" zoomable=true caption=\"${2:Caption.}\" %}"
+    ]
+  },
+  "GIF": {
+    "scope": "markdown",
+    "prefix": "gif",
+    "body": [
+      "{% include figure.liquid path=\"assets/img/posts/${1:file.gif}\" class=\"img-fluid rounded z-depth-1\" avoid_scaling=true caption=\"${2:Caption.}\" %}"
+    ]
+  },
+  "Video": {
+    "scope": "markdown",
+    "prefix": "video",
+    "body": [
+      "{% include video.liquid path=\"assets/img/posts/${1:file.mp4}\" class=\"img-fluid rounded z-depth-1\" controls=true autoplay=true loop=true %}"
+    ]
+  },
+  "Interactive Plotly figure": {
+    "scope": "markdown",
+    "prefix": "plotly",
+    "body": [
+      "<iframe src=\"{{ '/assets/plotly/${1:file.html}' | relative_url }}\" title=\"${2:Description}\" width=\"100%\" height=\"460\" style=\"border: none;\" loading=\"lazy\"></iframe>"
+    ]
+  },
+  "Jupyter notebook": {
+    "scope": "markdown",
+    "prefix": "notebook",
+    "body": [
+      "[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/antoinenasser/antoinenasser.github.io/blob/main/assets/jupyter/${1:file.ipynb})",
+      "",
+      "{::nomarkdown}",
+      "{% assign jupyter_path = \"assets/jupyter/${1:file.ipynb}\" | relative_url %}",
+      "{% capture notebook_exists %}{% file_exists assets/jupyter/${1:file.ipynb} %}{% endcapture %}",
+      "{% if notebook_exists == \"true\" %}",
+      "{% jupyter_notebook jupyter_path %}",
+      "{% else %}",
+      "<p>Notebook not found.</p>",
+      "{% endif %}",
+      "{:/nomarkdown}"
+    ]
+  },
+  "Displayed equation": {
+    "scope": "markdown",
+    "prefix": "equation",
+    "body": ["\\$\\$", "${1:equation in LaTeX}", "\\$\\$"]
+  }
+}

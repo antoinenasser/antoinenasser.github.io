@@ -1,20 +1,16 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: Ocean modelling · Numerical methods · Machine learning for climate models
 
 profile:
   align: right
-  image: prof_pic.jpg # replace assets/img/prof_pic.jpg with your own photo (same file name)
+  image: prof_pic.JPG # replace assets/img/prof_pic.jpg with your own photo (same file name)
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Postdoctoral Research Associate</p>
-    <p>Atmospheric &amp; Oceanic Sciences</p>
-    <p>Princeton University, NJ</p>
 
 selected_papers: true # lists the papers marked `selected = {true}` in _bibliography/papers.bib
-social: false # the visible links are the row under the bio, edited in _data/links.yml
+social: false # the visible links are the two rows around the bio, edited in _data/links.yml
 
 announcements:
   enabled: true # the timeline of items in the `_news` folder, newest first
@@ -24,10 +20,12 @@ announcements:
 latest_posts:
   enabled: false # set to true once you publish posts / how-tos in `_posts`
   scrollable: true
-  limit: 3
+  # limit: 3
 ---
 
-<!-- Bio: edit the paragraphs below. The links under it come from _data/links.yml. -->
+<!-- Bio: edit the paragraphs below. The links above and under it come from _data/links.yml. -->
+
+{% include profile_links.liquid group="main" %}
 
 I am a physical oceanographer working on the **numerics of ocean general circulation models**: how the discrete equations we solve on a computer represent coastlines, topography and ice-shelf cavities, and, more recently, how **machine learning** can produce numerical schemes that remain stable and generalize beyond their training data.
 
@@ -35,4 +33,4 @@ I am currently a Postdoctoral Research Associate in the [Atmospheric and Oceanic
 
 I did my PhD (2019–2023) at Sorbonne Université, between [LOCEAN](https://www.locean.ipsl.fr/) in Paris and [Inria / Laboratoire Jean Kuntzmann](https://team.inria.fr/airsea/) in Grenoble, under the supervision of Gurvan Madec, Laurent Debreu and Casimir de Lavergne. My thesis, [_Advancing the representation of flows along topography in z-coordinate ocean models_](https://theses.hal.science/tel-04399405), studied the spurious drag created by staircase-like coastlines and introduced Brinkman volume penalization to smooth topography and ice-shelf cavities in the NEMO ocean model.
 
-{% include profile_links.liquid %}
+{% include profile_links.liquid group="more" %}

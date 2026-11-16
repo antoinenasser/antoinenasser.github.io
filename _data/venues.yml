@@ -16,3 +16,15 @@
 "EGU":
   url: https://www.egu.eu/
   color: "#0e7490"
+
+"OSM":
+  url: https://www.agu.org/ocean-sciences-meeting
+  color: "#0369a1"
+
+"JPCC":
+  url: https://pubs.acs.org/journal/jpccck
+  color: "#7c3aed"
+
+"AOM":
+  url: https://advanced.onlinelibrary.wiley.com/journal/21951071
+  color: "#9a3412"

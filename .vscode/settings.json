@@ -1,0 +1,13 @@
+{
+  // Show the site snippets (.vscode/site.code-snippets) as you type in Markdown files.
+  "[markdown]": {
+    "editor.quickSuggestions": { "other": "on", "comments": "off", "strings": "off" },
+    "editor.snippetSuggestions": "top",
+    "editor.wordWrap": "on"
+  },
+  "files.exclude": {
+    "_site": true,
+    ".jekyll-cache": true,
+    "vendor": true
+  }
+}

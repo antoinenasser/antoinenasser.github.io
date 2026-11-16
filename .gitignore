@@ -9,7 +9,7 @@ _site
 .tweet-cache
 .venv
 assets/libs/
-assets/rendercv/rendercv_output/*.typ
+assets/pdf/Antoine_Nasser_publications.pdf
 al-folio-upgrade-report.md
 node_modules/
 output/playwright/

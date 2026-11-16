@@ -1,34 +1,51 @@
 {% comment %}
-  Row of labelled links shown on the landing page. Edit the list in _data/links.yml.
+  Row of labelled links on the landing page. Edit the lists in _data/links.yml.
+  Usage: {% include profile_links.liquid group="main" %} (buttons) or group="more" (smaller links).
 {% endcomment %}
-<style>
-  .profile-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.5rem 0 0.5rem;
-  }
-  .profile-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.35rem 0.85rem;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 999px;
-    color: var(--global-text-color);
-    font-size: 0.95rem;
-    text-decoration: none;
-  }
-  .profile-links a:hover {
-    border-color: var(--global-theme-color);
-    color: var(--global-theme-color);
-  }
-  .profile-links i {
-    font-size: 1.15rem;
-  }
-</style>
-<nav class="profile-links" aria-label="Profiles">
-  {% for link in site.data.links %}
+{% unless profile_links_styled %}
+  {% assign profile_links_styled = true %}
+  <style>
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 0 1.25rem;
+    }
+    .profile-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 999px;
+      color: var(--global-text-color);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .profile-links a:hover {
+      border-color: var(--global-theme-color);
+      color: var(--global-theme-color);
+    }
+    .profile-links i {
+      font-size: 1.15rem;
+    }
+    .profile-links.more {
+      gap: 1.25rem;
+      margin: 0.5rem 0 1.5rem;
+    }
+    .profile-links.more a {
+      padding: 0;
+      border: none;
+      color: var(--global-text-color-light);
+      font-size: 0.9rem;
+    }
+    .profile-links.more i {
+      font-size: 1rem;
+    }
+  </style>
+{% endunless %}
+<nav class="profile-links {{ include.group }}" aria-label="Profiles">
+  {% for link in site.data.links[include.group] %}
     <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"><i class="{{ link.icon }}"></i>{{ link.name }}</a>
   {% endfor %}
 </nav>

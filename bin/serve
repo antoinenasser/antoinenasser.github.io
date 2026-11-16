@@ -9,4 +9,6 @@ export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PWD/.venv/bin:$PATH"
 # pin the 26.5 SDK when (re)installing gems.
 export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
 bundle check >/dev/null || bundle install
+# PDF list of publications and talks, rebuilt from the .bib files at each start
+python bin/publication_list.py || echo "Skipped the publication PDF (run: .venv/bin/pip install pybtex typst)"
 exec bundle exec jekyll serve --livereload "$@"

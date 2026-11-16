@@ -1,0 +1,11 @@
+{
+  // VS Code offers to install these when the folder is opened.
+  "recommendations": [
+    "eliostruyf.vscode-front-matter",
+    "yzhang.markdown-all-in-one",
+    "sissel.shopify-liquid",
+    "redhat.vscode-yaml",
+    "ms-toolsai.jupyter",
+    "ms-python.python"
+  ]
+}

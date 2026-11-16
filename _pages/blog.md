@@ -1,9 +1,9 @@
 ---
 layout: default
 permalink: /blog/
-title: blog
-nav: false # set to true to show a "blog" tab once you publish posts
-nav_order: 4
+title: Notes
+nav: true
+nav_order: 3
 pagination:
   enabled: true
   collection: posts
@@ -188,6 +188,11 @@ pagination:
     {% endfor %}
 
   </ul>
+
+{% if site.posts.size == 0 %}
+
+<p>The first notes and how-tos are on their way.</p>
+{% endif %}
 
 {% if page.pagination.enabled %}
 {% include pagination.liquid %}
