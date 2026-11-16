@@ -6,7 +6,7 @@ subtitle: Ocean modelling · Numerical methods · Machine learning for climate m
 
 profile:
   align: right
-  image: prof_pic.JPG # replace assets/img/prof_pic.jpg with your own photo (same file name)
+  image: prof_pic.jpg # replace assets/img/prof_pic.jpg with your own photo (same file name)
   image_circular: false # crops the image to make it circular
 
 selected_papers: true # lists the papers marked `selected = {true}` in _bibliography/papers.bib
