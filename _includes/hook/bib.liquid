@@ -1,0 +1,7 @@
+{% comment %}
+  Hook called by the theme's bib layout while it builds the venue line of a publication or talk.
+  Appends the `tag` field of the entry (e.g. "Invited talk", "Submitted to ...") in bold after the date.
+{% endcomment %}
+{% if entry.tag %}
+  {% capture entryyear %}{{ entryyear }}{{ " · " }}<strong>{{ entry.tag }}</strong>{% endcapture %}
+{% endif %}

@@ -1,0 +1,12 @@
+{% comment %}
+  Mentoring list on the landing page. Edit the people in _data/mentoring.yml.
+{% endcomment %}
+<ul class="mentoring">
+  {% for person in site.data.mentoring %}
+    <li>
+      {% if person.url %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}<strong>{{ person.name }}</strong>{% endif %}
+      {%- if person.role %}, {{ person.role }}{% endif -%}
+      , {{ person.institution }} ({{ person.year }})
+    </li>
+  {% endfor %}
+</ul>

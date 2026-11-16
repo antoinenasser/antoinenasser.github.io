@@ -1,0 +1,15 @@
+# People I co-supervised or advised, newest first.
+# Shown in the "mentoring" section of the landing page (mentoring: true in _pages/about.md).
+# Optional fields: role (e.g. "Master's internship, co-supervised"), url (a page about them).
+
+- name: Jinchang Li
+  institution: Princeton University
+  year: 2026
+
+- name: Lohenn Fiol
+  institution: IGE, Grenoble
+  year: 2024
+
+- name: C. Gentil
+  institution: LOCEAN, Paris
+  year: 2023

@@ -4,9 +4,24 @@
 % Publications shown on the publications page.
 % Useful fields:
 %   selected   true shows the paper on the landing page
+%   tag        bold text at the end of the line, for example the journal a preprint is submitted to
 %   preview    an image, GIF or MP4 file name, placed in assets/img/publication_preview/
 %   abbr       badge on the left, colors and links in _data/venues.yml
 %   code, pdf, slides, poster, website, video, hal, arxiv: extra buttons
+
+@unpublished{nasser2026overflows,
+  title    = {Addressing the staircase effect in overflows with the Brinkman Volume Penalization method},
+  author   = {Nasser, Antoine-Alexis and Debreu, Laurent and {de Lavergne}, Casimir and Madec, Gurvan},
+  year     = {2026},
+  tag      = {In preparation}
+}
+
+@unpublished{fiol2026lakes,
+  title    = {Ice shelf basal melting in giant proglacial lakes},
+  author   = {Fiol, Lohenn and Jourdain, Nicolas C. and Nasser, Antoine-Alexis and Quiquet, A. and Caneill, R. and Mathiot, Pierre},
+  year     = {2026},
+  tag      = {In preparation}
+}
 
 @article{nasser2026design,
   abbr     = {arXiv},
@@ -16,6 +31,7 @@
   year     = {2026},
   month    = {jun},
   arxiv    = {2606.17497},
+  tag      = {Submitted to Journal of Computational Physics},
   code     = {https://github.com/antoine-182/design-principles-ML-FV-schemes-JCP2026},
   abstract = {We investigate data-driven finite-volume discretizations of the linear advection equation in one dimension. Neural networks for use as numerical advection schemes are constructed adhering to first principles of numerical analysis, allowing us to examine how normalization, training data, and architectural choices influence stability, accuracy, and shape preservation. (i) We show that reconstruction based solely on cell averages leads to a multi-valued learning problem, explaining limited generalization when training data includes widely different curvature regimes. (ii) Numerical stability and good generalization can be achieved by enforcing semilinearity (Lin and Rood 1998) through local stencil-scale normalization, which ensures invariance under affine transformations of the inputs. (iii) A new data-driven flux limiter is introduced that outperforms the classical 'OSTVD3' (Arora and Roe, 1997) scheme in shape preservation by introducing mild antidiffusion in near-linear regimes, while higher-order reconstruction in non-monotonic regions provides limited benefit. (iv) We show that training on polynomial profiles yields stable, high-order accurate discretizations, with the polynomial degree controlling the formal order of accuracy. Together, these results illustrate how the representational, architectural, and training choices govern the stability and generalization of data-driven finite-volume schemes for linear advection.},
   preview  = {design_principles.png},
@@ -30,6 +46,7 @@
   journal  = {ESS Open Archive (preprint)},
   year     = {2026},
   doi      = {10.22541/essoar.176677323.32970185/v2},
+  tag      = {Submitted to Journal of Advances in Modeling Earth Systems},
   code     = {https://github.com/antoine-182/bvp_isomip_Nasser2026},
   abstract = {Numerical ocean models remain essential for investigating ice-shelf-ocean interaction to estimate the fate of the Antarctic Ice Sheet in a warming climate. A persistent challenge in z-coordinate ocean models is the artificial stepwise representation of cavity geometries, which induces excessive diapycnal mixing and numerical noise beneath the ice draft. Here, we assess the potential of the Brinkman Volume Penalization (BVP) method for ice-ocean modeling, in which the ice-ocean interface is replaced by a porous region that is partially ocean and partially ice. The benefits of penalization are evaluated in a z-coordinate ocean model using an idealized ISOMIP+ configuration (Asay-Davis et al. 2016) under both warm and cold scenarios. First, smoothing the cavity with the BVP acts as an effective local increase in vertical resolution, improving ocean circulation near the grounding line and allowing strong basal melt at the ice-shelf base. Second, we show that the distribution of heat and meltwater within the penalized region reduces spurious mixing, leading to colder and fresher ice-shelf waters and a strengthened overturning circulation. Hence, the BVP approach provides a promising alternative to a Losch (2008) melt-layer formulation, for which similar noise reduction requires prescribing a melt-layer depth that is too large and leads to excessive mixing. Finally, we show that at least four vertical grid cells are required to resolve grounding-zone overturning and to obtain strong and consistent basal melt patterns. In summary, these results provide practical guidance for improving the numerical treatment of ice-shelf cavities in OGCMs.},
   additional_info = {. Data: [NEMO simulations](https://doi.org/10.5281/zenodo.17774098), [Python/Jupyter scripts](https://doi.org/10.5281/zenodo.17810206)},
@@ -62,6 +79,7 @@
   year     = {2025},
   month    = {oct},
   arxiv    = {2510.22676},
+  tag      = {Submitted to Nature Communications},
   abstract = {Climate simulations, at all grid resolutions, rely on approximations that encapsulate the forcing due to unresolved processes on resolved variables, known as parameterizations. Parameterizations often lead to inaccuracies in climate models, with significant biases in the physics of key climate phenomena. Advances in artificial intelligence (AI) are now directly enabling the learning of unresolved processes from data to improve the physics of climate simulations. Here, we introduce a flexible framework for developing and implementing physics- and scale-aware machine learning parameterizations within climate models. We focus on the ocean and sea-ice components of a state-of-the-art climate model by implementing a spectrum of data-driven parameterizations, ranging from complex deep learning models to more interpretable equation-based models. Our results showcase the viability of AI-driven parameterizations in operational models, advancing the capabilities of a new generation of hybrid simulations, and include prototypes of fully coupled atmosphere-ocean-sea-ice hybrid simulations. The tools developed are open source, accessible, and available to all.},
   bibtex_show = {true}
 }
@@ -74,6 +92,7 @@
   year     = {2023},
   month    = {sep},
   hal      = {tel-04399405},
+  abstract = {The seafloor exerts a major control on ocean circulation. The discrete representation of marine topography in geopotential Ocean General Circulation Models (OGCMs) creates artificial steps that have adverse effects on the simulated circulation. This thesis aims at finding suitable ways to address the adverse effects of stepped topography in z-coordinate OGCMs. Using idealized configurations and exploring the potential of the Brinkman Volume Penalisation (BVP) method, we investigate the sensitivity of modelled currents to the presence of artificial steps along model boundaries. We first address the spurious lateral form drag (or staircase problem) highlighted by Adcroft and Marshall (1998). We show that staircase-like coastlines (and isobaths) behave as smooth boundaries when applying a true mirror condition on the boundary flow. The discrete implementation of free-slip using flux-form advection and a symmetric viscous stress tensor actually corresponds to no-slip along stepped topography. The choice of viscous boundary condition should vary with location to capture the retroflection of boundary currents at capes. To become insensitive to stepped topography, numerical models should ideally achieve physical convergence (i.e. the main characteristics of the flow are not affected by increasing spatial resolution while keeping viscous and frictional parameters constant). This convergence can be attained at lower resolution with a careful treatment of discrete momentum advection involving a large stencil. We highlight the impact of momentum advection schemes on the fidelity of simulated downslope currents within an idealised overflow configuration. The BVP method allows to spread the land-ocean interface, by introducing porous cells that are half-land half-ocean. We find that this spreading allows to smooth bottom currents and to reduce spurious mixing during downslope flow. The numerical stability of the BVP can be guaranteed by sufficient spreading of the boundary and by defining permeability (friction within porous cells) in a consistent way. The results underscore the potential of the BVP method to better represent flows along topography in OGCMs.},
   bibtex_show = {true}
 }
 
@@ -106,6 +125,7 @@
   pages    = {347--355},
   year     = {2019},
   doi      = {10.1021/acs.jpcc.8b07679},
+  abstract = {X-ray photoelectron spectroscopy (XPS) is a widely used technique to study surfaces and interfaces. In complex chemical systems, however, interpretation of the XPS results and peak assignments is not straightforward. This is not least true for Li-batteries, where XPS yet remains a standard technique for interface characterization. In this work, a combined density functional theory (DFT) and experimental XPS study is carried out to obtain the C 1s and O 1s core-level binding energies of organic carbonate molecules on the surface of Li metal. Decomposition of organic carbonates is frequently encountered in electrochemical cells employing this electrode, contributing to the build up of a complex solid electrolyte interphase (SEI). The goal in this current study is to identify the XPS fingerprints of the formed compounds, degradation pathways, and thereby the early formation stages of the SEI. The contribution of partial atomic charges on the core-ionized atoms and the electrostatic potential due to the surrounding atoms on the core-level binding energies, which is decisive for interpretation of the XPS spectra, are addressed based on the DFT calculations. The results display strong correlations between these two terms and the binding energies, whereas electrostatic potential is found to be the dominating factor. The organic carbonate molecules, decomposed at the surface of the Li metal, are considered based on two different decomposition pathways. The trends of calculated binding energies for products from ethereal carbon–ethereal oxygen bond cleavage in the organic carbonates are better supported when compared to the experimental XPS results.},
   bibtex_show = {true}
 }
 
@@ -120,5 +140,6 @@
   year     = {2018},
   month    = {dec},
   doi      = {10.1002/adom.201801177},
+  abstract = {Nanopatch antennas based on the assembly of nanocubes are an appealing way to easily produce structures that feature very thin gaps between metals at a very low cost compared with other surface modification techniques. If these coatings are very good absorbers in the visible and near‐infrared range, they can also be of interest for reaching light confinement regimes where nonlocality arises strongly, or for designing molecular electronics junctions embedded in resonating cavities. Here both modeling and experimental realization of a nanocube assembly approach based on alkyldithiols molecules is proposed that enables a high reproducibility on the resonance position of the cavities, as well as gaps that are thinner than the usual 3 nm limit often reported in the literature, thus opening the way to experimental confirmation of nonlocal effects as well as new perspectives for molecular electronics.},
   bibtex_show = {true}
 }

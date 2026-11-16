@@ -10,6 +10,7 @@ profile:
   image_circular: false # crops the image to make it circular
 
 selected_papers: true # lists the papers marked `selected = {true}` in _bibliography/papers.bib
+mentoring: true # lists the people in _data/mentoring.yml under the selected publications
 social: false # the visible links are the two rows around the bio, edited in _data/links.yml
 
 announcements:

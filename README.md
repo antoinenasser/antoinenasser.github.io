@@ -42,6 +42,7 @@ Pour une petite correction sans ordinateur configuré : sur la page du repo GitH
 | La chronologie de news                   | `_news/` (un petit fichier par news)                            |
 | Les publications                         | `_bibliography/papers.bib`                                      |
 | Les talks et posters                     | `_bibliography/talks.bib`                                       |
+| Les personnes encadrées (mentoring)      | `_data/mentoring.yml`                                           |
 | Les couleurs des badges (JAMES, EGU, …)  | `_data/venues.yml`                                              |
 | Les notes / how-tos                      | `_posts/` (modèle : `_drafts/article-template.md`)              |
 | Images, GIF, vidéos des notes            | `assets/img/posts/`                                             |
@@ -130,6 +131,7 @@ Les champs utiles, tous optionnels sauf titre, auteurs et année :
 | `code`, `pdf`, `slides`, `poster`, `video`, `website`, `html` | boutons vers un lien, ou vers un fichier de `assets/pdf/` |
 | `bibtex_show = {true}` | bouton « Bib » qui montre l'entrée BibTeX                                                             |
 | `additional_info`   | texte ajouté après la référence (liens vers les données, par exemple)                                    |
+| `tag`               | texte en gras à la fin de la ligne, par exemple `{Submitted to Journal of Computational Physics}`          |
 
 Deux pièges du lecteur BibTeX :
 
@@ -152,11 +154,18 @@ Même principe dans `_bibliography/talks.bib`, avec le type `@inproceedings` :
   year      = {2027},
   month     = {apr},
   doi       = {10.5194/egusphere-egu27-0000},
-  slides    = {mes_slides.pdf}
+  slides    = {mes_slides.pdf},
+  tag       = {Invited talk}
 }
 ```
 
-`slides = {mes_slides.pdf}` affiche un bouton vers `assets/pdf/mes_slides.pdf`.
+- `slides = {mes_slides.pdf}` affiche un bouton vers `assets/pdf/mes_slides.pdf` (ou vers une adresse web).
+- `tag` s'affiche en gras à la fin de la ligne. J'utilise `Invited talk`, `Invited seminar`, `Contributed presentation` et `Laboratory seminar`. Le PDF range les talks en deux sections selon que le tag commence par « Invited » ou non.
+- Un travail en préparation s'écrit `@unpublished{...}` dans `papers.bib`, avec `tag = {In preparation}`.
+
+### Le mentoring
+
+La liste sous les publications de l'accueil vient de `_data/mentoring.yml` : nom, institution, année, et en option `role` (« Master's internship, co-supervised ») et `url`.
 
 ### La liste PDF des publications
 
@@ -274,6 +283,9 @@ python3 -m venv .venv && .venv/bin/pip install nbconvert pybtex typst
 - **Le thème** : al-folio fournit la mise en page, les listes de publications, la chronologie, les notes, la recherche et le mode sombre. Ses fichiers sont dans des gems Ruby (`al_folio_core`, …), pas dans ce dossier. On ne les modifie pas : on règle `_config.yml`, `_data/` et les pages.
 - **Ajouts propres à ce site** :
   - `_includes/profile_links.liquid`, les boutons de liens ;
+  - `_includes/hook/bib.liquid`, qui affiche le `tag` en gras ;
+  - `_layouts/bib.liquid` et `_layouts/about.liquid`, copies des fichiers du thème avec une seule modification chacune (« Abstract » au lieu de « Abs », et la section mentoring) ; après une mise à jour du thème, les recopier depuis la gem et refaire la modification ;
+  - `_includes/mentoring.liquid`, la liste de mentoring ;
   - `bin/publication_list.py`, la liste PDF ;
   - `_drafts/article-template.md` et le notebook `assets/jupyter/advection-demo.ipynb`, qui fabrique le GIF et la figure interactive du modèle ;
   - `.vscode/`, les réglages et snippets.

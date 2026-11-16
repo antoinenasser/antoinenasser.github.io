@@ -27,7 +27,7 @@ def read_bib(path):
 
 
 def plain(text):
-    return re.sub(r"[{}]", "", text).strip()
+    return re.sub(r"[{}]", "", text).replace("\\&", "&").strip()
 
 
 def initials(given):
@@ -55,6 +55,8 @@ def link(entry):
     if "hal" in f:
         host = "theses.hal.science" if f["hal"].startswith("tel-") else "hal.science"
         return f"https://{host}/{f['hal']}"
+    if f.get("slides", "").startswith("http"):
+        return f["slides"]
     return f.get("url", "")
 
 
@@ -63,7 +65,7 @@ def venue(entry):
     if entry.type == "phdthesis":
         return f"[PhD thesis, {plain(f.get('school', ''))}]."
     if entry.type == "inproceedings":
-        parts = [plain(f.get("booktitle", "")), plain(f.get("location", "")), plain(f.get("note", ""))]
+        parts = [plain(f.get("booktitle", "")), plain(f.get("location", ""))]
         return ", ".join(p for p in parts if p) + "."
     text = plain(f.get("journal", ""))
     if "volume" in f:
@@ -76,8 +78,17 @@ def venue(entry):
 
 
 def reference(entry):
-    title = plain(entry.fields["title"]).rstrip(".")
-    return f"{authors(entry)} ({entry.fields.get('year', 'n.d.')}). {title}. {venue(entry)}"
+    f = entry.fields
+    title = plain(f["title"]).rstrip(".")
+    if entry.type == "unpublished":
+        return f"{authors(entry)} (in preparation). {title}."
+    text = f"{authors(entry)} ({f.get('year', 'n.d.')}). {title}. {venue(entry)}"
+    tag = plain(f.get("tag", ""))
+    return f"{text} {tag}." if tag else text
+
+
+def is_peer_reviewed(entry):
+    return entry.type == "article" and "tag" not in entry.fields and "preprint" not in entry.fields.get("journal", "").lower()
 
 
 def sort_key(entry):
@@ -116,9 +127,12 @@ def main():
 
 Publications and talks, updated {today}. #link("{WEBSITE}")
 
-{section("Articles and preprints", [e for e in papers if e.type != "phdthesis"])}
+{section("Peer-reviewed articles", [e for e in papers if is_peer_reviewed(e)])}
+{section("Submitted articles and preprints", [e for e in papers if e.type == "article" and not is_peer_reviewed(e)])}
+{section("In preparation", [e for e in papers if e.type == "unpublished"])}
 {section("PhD thesis", [e for e in papers if e.type == "phdthesis"])}
-{section("Talks and posters", talks)}
+{section("Invited talks and seminars", [e for e in talks if e.fields.get("tag", "").startswith("Invited")])}
+{section("Contributed presentations", [e for e in talks if not e.fields.get("tag", "").startswith("Invited")])}
 """
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_bytes(typst.compile(source.encode("utf-8")))

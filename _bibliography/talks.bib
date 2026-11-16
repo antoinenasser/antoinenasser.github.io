@@ -1,19 +1,55 @@
 ---
 ---
 
-% Talks and posters, rendered on the talks page.
+% Talks, seminars and posters, rendered on the talks page.
 % Use the inproceedings entry type, with booktitle (the event) and location.
-% Optional buttons: slides (a PDF in assets/pdf/ or a URL), poster, video, html.
+% tag: shown in bold at the end of the line, here the kind of presentation
+%      (Invited talk, Invited seminar, Contributed presentation, Laboratory seminar).
+% Optional buttons: slides (a PDF in assets/pdf/ or a URL), poster, video, html, abstract.
+
+@inproceedings{nasser2026commodore,
+  abbr      = {COMMODORE},
+  title     = {Brinkman Volume Penalization for Ice-Shelf-Ocean Interactions},
+  author    = {Nasser, Antoine-Alexis},
+  booktitle = {4th COMMODORE Workshop on Advancing Ocean Modeling},
+  location  = {Trieste, Italy},
+  year      = {2026},
+  month     = {sep},
+  slides    = {https://indico.ictp.it/event/11163/session/3/contribution/32/material/slides/},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2026cesm,
+  abbr      = {CESM},
+  title     = {From triangles to turbulence: generalizable data-driven advection discretization for Earth System Models},
+  author    = {Nasser, Antoine-Alexis and Adcroft, Alistair},
+  booktitle = {CESM Workshop},
+  location  = {Boulder, Colorado, USA},
+  year      = {2026},
+  month     = {jun},
+  tag       = {Contributed presentation}
+}
 
 @inproceedings{nasser2026osm,
   abbr      = {OSM},
   title     = {From triangles to turbulence: generalizable data-driven advection discretization for Earth System Models},
   author    = {Nasser, Antoine-Alexis and Adcroft, Alistair},
   booktitle = {Ocean Sciences Meeting 2026},
-  location  = {Glasgow, UK},
+  location  = {Glasgow, Scotland},
   year      = {2026},
   month     = {feb},
-  note      = {Abstract DO43A-05}
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2025m2lines,
+  abbr      = {M2LInES},
+  title     = {Generalizing machine-learned discretization for climate simulations: addressing 'out-of-sample' challenges for 2D data-driven advection discretization},
+  author    = {Nasser, Antoine-Alexis and Adcroft, Alistair},
+  booktitle = {M2LInES Annual Meeting},
+  location  = {New York, USA},
+  year      = {2025},
+  month     = {may},
+  tag       = {Invited talk}
 }
 
 @inproceedings{nasser2025egu,
@@ -23,7 +59,43 @@
   booktitle = {EGU General Assembly 2025},
   location  = {Vienna, Austria},
   year      = {2025},
-  doi       = {10.5194/egusphere-egu25-12958}
+  month     = {may},
+  doi       = {10.5194/egusphere-egu25-12958},
+  abstract  = {The effective spatial and temporal scales resolved by Earth System Models (ESMs) remain a key limitation in reducing uncertainties in climate projections. While increasing model resolution is computationally prohibitive, machine learning (ML)-based parameterizations offer a promising alternative. However, these approaches often face generalization challenges in ‘out-of-sample’ scenarios, leading to numerical instabilities when integrated into ESMs. In this study, we aim to tackle these challenges by developing a data-driven discretization neural network for multidirectional advection in ocean models. The canonical 1D advection problem is revisited by using neural networks to predict the coefficients of a three-node stencil trained on high-resolution solutions projected onto coarser spatial and temporal grids. Conventional discretizations generalize to all scalar fields, while the data-driven approach is, by construction, tied to the training data. First, it is shown that we can normalize inputs with min-max scaling to achieve generalization, while training on coarsened high-resolution data across multiple grid configurations reduces sensitivity to time steps and mesh resolution. We find that coarsening based on triangular test functions, instead of averaging, enables unique mapping of the fine-scale variations of high-resolution solutions, leading to monotonicity of the neural network. Hybrid ML discretizations that predict advective fluxes are investigated, with a focus on enforcing desirable numerical properties—such as monotonicity, accuracy, and stability. Finally, we aim to test the numerical and generalization properties of the new data-driven discretization on 2D geostrophic flows. These results provide guidance for the development of better end-to-end data-driven parameterizations and discretizations in ESMs.},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2024gfdl,
+  abbr      = {GFDL},
+  title     = {New approaches for topography representation in OGCMs},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and Debreu, Laurent and {de Lavergne}, Casimir and Jourdain, Nicolas C. and Mathiot, Pierre and Lemarié, Florian and Blayo, Eric},
+  booktitle = {Seminar at Princeton University and NOAA GFDL},
+  location  = {Princeton, New Jersey, USA},
+  year      = {2024},
+  month     = {dec},
+  tag       = {Invited seminar}
+}
+
+@inproceedings{nasser2024frisp,
+  abbr      = {FRISP},
+  title     = {Benefits of the Brinkman Volume Penalisation for basal melt rates in z-coordinate ocean circulation models},
+  author    = {Nasser, Antoine-Alexis and Jourdain, Nicolas C. and Mathiot, Pierre and Madec, Gurvan},
+  booktitle = {FRISP meeting (Forum for Research into Ice Shelf Processes)},
+  location  = {Bremen, Germany},
+  year      = {2024},
+  month     = {jun},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2024nemo,
+  abbr      = {NEMO},
+  title     = {Incorporating the Brinkman Penalisation method for enhanced representation of topography in OGCMs},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and Debreu, Laurent and {de Lavergne}, Casimir and Jourdain, Nicolas C. and Mathiot, Pierre and Lemarié, Florian and Blayo, Eric},
+  booktitle = {NEMO Workshop},
+  location  = {Southampton, UK},
+  year      = {2024},
+  month     = {may},
+  tag       = {Invited talk}
 }
 
 @inproceedings{nasser2024egu,
@@ -34,7 +106,64 @@
   location  = {Vienna, Austria},
   year      = {2024},
   month     = {apr},
-  doi       = {10.5194/egusphere-egu24-17676}
+  doi       = {10.5194/egusphere-egu24-17676},
+  abstract  = {Antarctic ice-shelf basal melting is a major source of uncertainty in sea level rise projections. A persistent challenge in simulating the ice-shelf-ocean interactions in z-coordinate ocean models is the introduction of artificial steps, leading to the generation of noise that impacts both melting and ocean currents. This study explores the potential of the Brinkman Volume Penalisation (BVP) method (Debreu et al. 2020, 2022) to address the recurrent issue of steps in ice-shelf-ocean models. While penalisation methods are typically applied to land topography, here, the method is generalised to ice-shelf interactions with oceans. This approach introduces porous cells that are half-ice, half-ocean, combined with a permeability parameter (friction within porous cells) to model the blocking effect of the ice draft. A unique aspect of this method is its ability to spread the penalisation region, thereby reducing model sensitivity to numerical level changes. We assess the potential benefits of the BVP approach within the idealised ice-shelf configuration ISOMIP+ as presented by Asay-Davis et al. (2016). First, a new calculation of the horizontal pressure gradient is formulated using the BVP approach, which eliminates residual biases in ocean currents down to zero machine precision. Second, the spreading of the penalised interface significantly reduces noise in the melt rates, enabling a smooth response of the ocean beneath the ice-shelf without the need for further mesh refinement. Other simulations are used to investigate the sensitivity of basal melting and freezing in the penalised configuration to changes in numerical parameters (e.g. spatial resolution). These results pave the way for a better numerical treatment of ice-shelves in earth system models.},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2024traccs,
+  abbr      = {TRACCS},
+  title     = {Nouvelles approches pour représenter la topographie dans les OGCMs},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and Debreu, Laurent and {de Lavergne}, Casimir and Jourdain, Nicolas C. and Mathiot, Pierre and Lemarié, Florian and Blayo, Eric},
+  booktitle = {TRACCS kick-off meeting},
+  location  = {Toulouse, France},
+  year      = {2024},
+  month     = {apr},
+  tag       = {Invited talk}
+}
+
+@inproceedings{nasser2024drakkar,
+  abbr      = {DRAKKAR},
+  title     = {Addressing the staircase effect in overflows with the Brinkman Volume Penalisation method},
+  author    = {Nasser, Antoine-Alexis and Debreu, Laurent and Madec, Gurvan and {de Lavergne}, Casimir},
+  booktitle = {DRAKKAR meeting},
+  location  = {Grenoble, France},
+  year      = {2024},
+  month     = {jan},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2023andiamo,
+  abbr      = {ANDIAMO},
+  title     = {Sliding down the slope with the volume penalisation technique},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {ANDIAMO seminar},
+  location  = {Paris, France},
+  year      = {2023},
+  month     = {jan},
+  tag       = {Invited seminar}
+}
+
+@inproceedings{nasser2023drakkar,
+  abbr      = {DRAKKAR},
+  title     = {Sliding or stumbling on the staircase: numerics of ocean circulation along piecewise-constant coastlines},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {DRAKKAR meeting},
+  location  = {Grenoble, France},
+  year      = {2023},
+  month     = {jan},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2022uct,
+  abbr      = {UCT},
+  title     = {Toward better numerical solutions for circulation along piecewise-constant coastlines in ocean models},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {Seminar at the University of Cape Town},
+  location  = {Cape Town, South Africa},
+  year      = {2022},
+  month     = {jul},
+  tag       = {Invited seminar}
 }
 
 @inproceedings{nasser2022egu,
@@ -44,5 +173,63 @@
   booktitle = {EGU General Assembly 2022},
   location  = {Vienna, Austria},
   year      = {2022},
-  doi       = {10.5194/egusphere-egu22-10204}
+  month     = {may},
+  doi       = {10.5194/egusphere-egu22-10204},
+  abstract  = {Using a 1/4° shallow water model, Adcroft and Marshall (1998) show that the solution obtained on a rotated mesh depends on the angle between the numerical grid and the physical coastline. They conclude that piecewise constant coastline exert a spurious form stress on the model boundary current. Here, we reproduce these results and test the combination of free-slip and no-slip boundary conditions with the stress tensors’ vorticity-divergence and symmetric forms. We show that, for all angles of rotation, the equilibrium solutions actually remain similar, provided that the system has numerically converged (i.e. higher resolution with physics unchanged). It appears that having at least 4 grid-points by internal radius of deformation is necessary to accurately represent flows along coastlines. Surprisingly, the symmetric tensor combined with the free-slip condition leads to dynamics that are insensitive to resolution and akin to no-slip. We argue that the way the free-slip condition is implemented with the symmetric tensor is not suitable. We propose an alternative implementation and discuss its advantages and limitations.},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2022osm,
+  abbr      = {OSM},
+  title     = {Finding better numerical solutions for circulation along piecewise-constant coastlines in ocean models},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {Ocean Sciences Meeting 2022},
+  location  = {Online},
+  year      = {2022},
+  month     = {mar},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2022drakkar,
+  abbr      = {DRAKKAR},
+  title     = {Finding better numerical solutions for circulation along piecewise-constant coastlines in ocean models},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {DRAKKAR meeting},
+  location  = {Online},
+  year      = {2022},
+  month     = {feb},
+  tag       = {Contributed presentation}
+}
+
+@inproceedings{nasser2021locean,
+  abbr      = {LOCEAN},
+  title     = {Searching for better numerical solutions along piecewise-constant coastlines},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {LOCEAN PhD seminar},
+  location  = {Paris, France},
+  year      = {2021},
+  month     = {oct},
+  tag       = {Laboratory seminar}
+}
+
+@inproceedings{nasser2021surf,
+  abbr      = {SURF},
+  title     = {Brinkman Volume Penalisation Method for the flow along a topography},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {SURF PhD day},
+  location  = {Online},
+  year      = {2021},
+  month     = {may},
+  tag       = {Laboratory seminar}
+}
+
+@inproceedings{nasser2020nemo,
+  abbr      = {NEMO},
+  title     = {Outdoing the staircase effect in an idealised shallow water configuration},
+  author    = {Nasser, Antoine-Alexis and Madec, Gurvan and {de Lavergne}, Casimir and Debreu, Laurent},
+  booktitle = {NEMO R\&D team meeting},
+  location  = {Paris, France},
+  year      = {2020},
+  month     = {oct},
+  tag       = {Laboratory seminar}
 }
