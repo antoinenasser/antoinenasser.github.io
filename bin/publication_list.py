@@ -80,9 +80,7 @@ def venue(entry):
 def reference(entry):
     f = entry.fields
     title = plain(f["title"]).rstrip(".")
-    if entry.type == "unpublished":
-        return f"{authors(entry)} (in preparation). {title}."
-    text = f"{authors(entry)} ({f.get('year', 'n.d.')}). {title}. {venue(entry)}"
+    text =f"{authors(entry)} ({f.get('year', 'n.d.')}). {title}. {venue(entry)}"
     tag = plain(f.get("tag", ""))
     return f"{text} {tag}." if tag else text
 
@@ -129,7 +127,6 @@ Publications and talks, updated {today}. #link("{WEBSITE}")
 
 {section("Peer-reviewed articles", [e for e in papers if is_peer_reviewed(e)])}
 {section("Submitted articles and preprints", [e for e in papers if e.type == "article" and not is_peer_reviewed(e)])}
-{section("In preparation", [e for e in papers if e.type == "unpublished"])}
 {section("PhD thesis", [e for e in papers if e.type == "phdthesis"])}
 {section("Invited talks and seminars", [e for e in talks if e.fields.get("tag", "").startswith("Invited")])}
 {section("Contributed presentations", [e for e in talks if not e.fields.get("tag", "").startswith("Invited")])}

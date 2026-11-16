@@ -1,7 +1,9 @@
 # CLAUDE.md
 
 Personal site of Antoine Nasser (antoinenasser.github.io), built on the al-folio v1.2 Jekyll starter.
-README.md (in French, for the owner) says where each piece of content lives; keep it in sync when adding features.
+README.md is the short public description of the repo (English, points to the al-folio template); keep it sober.
+CHEATSHEET.md (in French, for the owner) says where each piece of content lives; keep it in sync when adding features.
+Publications: no "in preparation" works on the site (a paper enters once its preprint is online), and prefer the published version (title, author order) over preprint versions.
 
 - `baseurl` is empty; the site is served at the root. The repo must stay named `antoinenasser.github.io`.
 - Preview: `./bin/serve` (Homebrew ruby@3.3 + `.venv` for `jupyter nbconvert`, `pybtex`, `typst`). Build: same PATH, `bundle exec jekyll build`.
