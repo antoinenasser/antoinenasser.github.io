@@ -6,7 +6,7 @@ subtitle: Ocean modelling · Numerical methods · Machine learning for climate m
 
 profile:
   align: right
-  image: prof_pic.jpg # replace assets/img/prof_pic.jpg with your own photo (same file name)
+  image: prof_pic.JPG # replace assets/img/prof_pic.jpg with your own photo (same file name)
   image_circular: false # crops the image to make it circular
 
 selected_papers: true # lists the papers marked `selected = {true}` in _bibliography/papers.bib
@@ -28,10 +28,12 @@ latest_posts:
 
 {% include profile_links.liquid group="main" %}
 
-I am a physical oceanographer working on the **numerics of ocean general circulation models**: how the discrete equations we solve on a computer represent coastlines, topography and ice-shelf cavities, and, more recently, how **machine learning** can produce numerical schemes that remain stable and generalize beyond their training data.
+Hello! My name is Antoine. I am a physical oceanographer with a background in applied mathematics, numerical modeling, and scientific machine learning. My research focuses on developing new AI approaches and computational methods to advance the modeling of complex fluid systems, with applications to ocean and climate science.
 
-I am currently a Postdoctoral Research Associate in the [Atmospheric and Oceanic Sciences program](https://aos.princeton.edu/) at Princeton University, where I work with Alistair Adcroft on data-driven discretizations for climate models.
+I am currently a Postdoctoral Research Associate in the [M2Lines](https://m2lines.github.io/) project at Princeton University, where I work with [Professor Alistair Adcroft](https://adcroft.github.io/landing.html) in the [Atmospheric and Oceanic Sciences Program](https://aos.princeton.edu/). I completed my [PhD](https://theses.hal.science/tel-04399405) at Sorbonne Université, working between the [Laboratoire Jean Kuntzmann](https://team.inria.fr/airsea/) (Inria, Grenoble) and [LOCEAN](https://www.locean.ipsl.fr/) (CNRS, Paris), under the supervision of Gurvan Madec, Laurent Debreu, and Casimir de Lavergne. During my thesis, I addressed a long-standing numerical issue arising from the representation of topography in ocean models and contributed to the development of a new modeling framework known as the Brinkman volume penalization, which was subsequently integrated into [NEMO](https://nemo-ocean.eu/), the community ocean model, to better represent topographic flows in ocean and climate simulations.
 
-I did my PhD (2019–2023) at Sorbonne Université, between [LOCEAN](https://www.locean.ipsl.fr/) in Paris and [Inria / Laboratoire Jean Kuntzmann](https://team.inria.fr/airsea/) in Grenoble, under the supervision of Gurvan Madec, Laurent Debreu and Casimir de Lavergne. My thesis, [_Advancing the representation of flows along topography in z-coordinate ocean models_](https://theses.hal.science/tel-04399405), studied the spurious drag created by staircase-like coastlines and introduced Brinkman volume penalization to smooth topography and ice-shelf cavities in the NEMO ocean model.
+Beyond my specific research topics, I am interested in understanding how mathematical principles and computational approaches can help overcome longstanding challenges in modeling physical systems. I enjoy exploring connections between disciplines and combining different perspectives, which often lead to exciting new ideas and solutions.
+
+Feel free to explore this page to learn more about my research, projects, and interests!
 
 {% include profile_links.liquid group="more" %}
