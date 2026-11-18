@@ -36,33 +36,31 @@
     ],
     "description": "Front matter for a file in _posts/"
   },
-  "Image": {
+  // Paths below are relative to the note's folder in _posts/ (see _plugins/post_folders.rb).
+  "Image or GIF": {
     "scope": "markdown",
     "prefix": "image",
     "body": [
-      "{% include figure.liquid path=\"assets/img/posts/${1:file.png}\" class=\"img-fluid rounded z-depth-1\" zoomable=true caption=\"${2:Caption.}\" %}"
-    ]
-  },
-  "GIF": {
-    "scope": "markdown",
-    "prefix": "gif",
-    "body": [
-      "{% include figure.liquid path=\"assets/img/posts/${1:file.gif}\" class=\"img-fluid rounded z-depth-1\" avoid_scaling=true caption=\"${2:Caption.}\" %}"
-    ]
+      "![${1:Short description}](${2:file.png})",
+      "*${3:Fig. 1. Caption.}*"
+    ],
+    "description": "Image or GIF from the note's folder, with its caption"
   },
   "Video": {
     "scope": "markdown",
     "prefix": "video",
     "body": [
-      "{% include video.liquid path=\"assets/img/posts/${1:file.mp4}\" class=\"img-fluid rounded z-depth-1\" controls=true autoplay=true loop=true %}"
-    ]
+      "<video src=\"${1:file.mp4}\" class=\"img-fluid rounded z-depth-1 d-block mx-auto\" controls autoplay loop muted playsinline></video>"
+    ],
+    "description": "MP4 from the note's folder"
   },
   "Interactive Plotly figure": {
     "scope": "markdown",
     "prefix": "plotly",
     "body": [
-      "<iframe src=\"{{ '/assets/plotly/${1:file.html}' | relative_url }}\" title=\"${2:Description}\" width=\"100%\" height=\"460\" style=\"border: none;\" loading=\"lazy\"></iframe>"
-    ]
+      "<iframe src=\"${1:file.html}\" title=\"${2:Description}\" width=\"100%\" height=\"460\" style=\"border: none;\" loading=\"lazy\"></iframe>"
+    ],
+    "description": "Plotly HTML file from the note's folder"
   },
   "Jupyter notebook": {
     "scope": "markdown",

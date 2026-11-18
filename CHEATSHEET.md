@@ -44,9 +44,8 @@ Pour une petite correction sans ordinateur configuré : sur la page du repo GitH
 | Les talks et posters                     | `_bibliography/talks.bib`                                       |
 | Les personnes encadrées (mentoring)      | `_data/mentoring.yml`                                           |
 | Les couleurs des badges (JAMES, EGU, …)  | `_data/venues.yml`                                              |
-| Les notes / how-tos                      | `_posts/` (modèle : `_drafts/article-template.md`)              |
-| Images, GIF, vidéos des notes            | `assets/img/posts/`                                             |
-| Figures interactives (Plotly)            | `assets/plotly/`                                                |
+| Les notes / how-tos                      | `_posts/nom-court/`, un dossier par note                        |
+| Images, GIF, vidéos, figures d'une note  | dans le dossier de la note                                      |
 | Notebooks Jupyter                        | `assets/jupyter/`                                               |
 | Les onglets et le texte des pages        | `_pages/`                                                       |
 | Nom du site, options générales           | `_config.yml` (redémarrer `./bin/serve` après une modification) |
@@ -175,25 +174,41 @@ Il n'y a rien à faire : elle est refaite à chaque publication du site et à ch
 
 ### Une note ou un how-to
 
-1. Copier `_drafts/article-template.md` dans `_posts/AAAA-MM-JJ-nom-court.md`. Ou créer le fichier et taper `article` puis Tab.
-2. Changer le titre, la date, la description, puis écrire.
-3. La note apparaît dans l'onglet **Notes**, à l'adresse `/blog/AAAA/nom-court/`.
-4. L'annoncer dans la chronologie avec une news (voir plus haut).
+Chaque note a son propre dossier dans `_posts/`, avec tout ce qu'elle affiche. Exemple complet :
 
-Le modèle montre tout ce qu'on peut insérer. Pour le voir : `./bin/serve --drafts` puis http://localhost:4000/blog/2026/article-template/
+```text
+_posts/article1-rice-paddies/
+  2026-11-18-rice-paddies-from-space.md   ← la note
+  assets/anim_vh_season.mp4               ← ses images, GIF, vidéos, figures HTML…
+  assets/article1/fig_01.1.png
+```
+
+1. Créer un dossier `_posts/nom-court/` (nom libre) et y mettre la note `AAAA-MM-JJ-nom-court.md`. La date au début du nom est obligatoire : sans elle, Jekyll ignore le fichier.
+2. Dans le fichier vide, taper `article` puis Tab pour l'en-tête. Changer le titre, la description, les tags, puis écrire. Le thème affiche déjà le titre et la date : ne pas les répéter en `# Titre` dans le texte.
+3. Les fichiers du dossier s'appellent par leur chemin relatif, comme dans l'aperçu Markdown de VS Code : `![Carte des rizières](assets/carte.png)`.
+4. La note apparaît dans l'onglet **Notes**, à l'adresse `/blog/AAAA/nom-court/`. Les fichiers du dossier sont publiés à côté d'elle, sauf les `.md` (on peut y garder des notes de travail).
+5. L'annoncer dans la chronologie avec une news (voir plus haut).
+
+Pour préparer une note sans la mettre en ligne : ajouter `published: false` dans l'en-tête, et la voir avec `./bin/serve --unpublished`. Ne pas mettre les dossiers dans `_drafts/` : Jekyll y prend chaque fichier texte pour un brouillon.
+
+Une image seule sur sa ligne devient une figure : largeur de la colonne, centrée, coins arrondis, zoom au clic, chargement différé. Sa légende est la ligne suivante, en italique :
+
+```markdown
+![Carte des rizières](assets/carte.png)
+*Fig. 2. Les rizières de la zone d'étude.*
+```
 
 | Pour insérer…                          | Snippet VS Code | Remarque                                                                                      |
 | -------------------------------------- | --------------- | --------------------------------------------------------------------------------------------- |
-| une image                              | `image`         | fichier dans `assets/img/posts/`                                                              |
-| un GIF                                 | `gif`           | garder `avoid_scaling=true`, sinon le GIF devient une image fixe                              |
-| une vidéo                              | `video`         | MP4 dans `assets/img/posts/`                                                                  |
-| une figure interactive                 | `plotly`        | en Python : `fig.write_html("assets/plotly/nom.html", include_plotlyjs="cdn")`                |
-| un notebook + bouton Colab             | `notebook`      | exécuter le notebook avant le commit : la page montre les sorties enregistrées                |
+| une image ou un GIF                    | `image`         | fichier dans le dossier de la note                                                            |
+| une vidéo                              | `video`         | MP4 dans le dossier de la note                                                                |
+| une figure interactive                 | `plotly`        | en Python : `fig.write_html("figure.html", include_plotlyjs="cdn")`, dans le dossier de la note |
+| un notebook + bouton Colab             | `notebook`      | dans `assets/jupyter/` ; exécuter le notebook avant le commit : la page montre les sorties enregistrées |
 | une équation                           | `equation`      | LaTeX entre `$$ … $$`, aussi en ligne                                                         |
 
-Les widgets Python en direct (`ipywidgets`) ne peuvent pas tourner sur un site statique. On les remplace par une figure Plotly avec curseurs, ou par le bouton Colab qui ouvre le notebook pour le lecteur.
+Le modèle `_drafts/article-template.md` montre le reste (notebook, équations, code). Pour le voir : `./bin/serve --drafts` puis http://localhost:4000/blog/2026/article-template/. Ses images sont rangées dans les dossiers communs (`assets/img/posts/`, `assets/plotly/`) et appelées par l'include `figure.liquid`. Cette façon de faire marche toujours, et c'est la seule qui fabrique des versions WebP allégées des images. Avec elle, deux fichiers ne doivent pas porter le même nom avec deux extensions (`carte.png` et `carte.gif`) : ils se marchent dessus.
 
-Deux fichiers ne doivent pas porter le même nom avec deux extensions (`carte.png` et `carte.gif`) : ils se marchent dessus.
+Les widgets Python en direct (`ipywidgets`) ne peuvent pas tourner sur un site statique. On les remplace par une figure Plotly avec curseurs, ou par le bouton Colab qui ouvre le notebook pour le lecteur.
 
 Pour une note qui renvoie vers un article publié ailleurs (Medium, un blog de labo…), ajouter `redirect: https://...` dans l'en-tête : le titre dans l'onglet Notes mènera directement au lien.
 
@@ -250,7 +265,7 @@ En ouvrant le dossier, VS Code propose d'installer les extensions recommandées 
 - **Shopify Liquid** : coloration des balises `{% … %}` ;
 - **YAML**, **Python**, **Jupyter**.
 
-Les snippets du site (`.vscode/site.code-snippets`) : dans un fichier `.md`, taper `news`, `article`, `image`, `gif`, `video`, `plotly`, `notebook` ou `equation`, puis Tab.
+Les snippets du site (`.vscode/site.code-snippets`) : dans un fichier `.md`, taper `news`, `article`, `image`, `video`, `plotly`, `notebook` ou `equation`, puis Tab.
 
 ---
 
@@ -261,8 +276,11 @@ Les snippets du site (`.vscode/site.code-snippets`) : dans un fichier `.md`, tap
 | Le site en ligne ne change pas                   | onglet **Actions** du repo : la construction a peut-être échoué, le message est dans le log |
 | `Lexer: unexpected token` dans le terminal       | un `@` ou un accent grave dans un commentaire `%` d'un fichier `.bib`                       |
 | Un nom d'auteur mal coupé                        | mettre la particule entre accolades : `{de Lavergne}, Casimir`                              |
-| Un GIF reste figé                                | ajouter `avoid_scaling=true` à l'include                                                    |
+| Une note n'apparaît pas                          | nom de fichier sans date `AAAA-MM-JJ-`, date dans le futur, ou `published: false`           |
+| Une image d'une note ne s'affiche pas            | chemin relatif au dossier de la note, sans `/` au début ; majuscules et minuscules comptent en ligne |
+| Un GIF reste figé                                | ajouter `avoid_scaling=true` à l'include `figure.liquid`                                     |
 | Une modification de `_config.yml` n'apparaît pas | arrêter (Ctrl+C) et relancer `./bin/serve`                                                  |
+| En local, les images des notes manquent toutes   | `./bin/serve` tournait déjà quand `_plugins/` a changé : l'arrêter (Ctrl+C) et le relancer  |
 | Le PDF des publications n'est pas à jour en local | relancer `./bin/serve`                                                                     |
 | `./bin/serve` échoue sur l'installation des gems | voir l'encadré ci-dessous                                                                   |
 
@@ -286,6 +304,7 @@ python3 -m venv .venv && .venv/bin/pip install nbconvert pybtex typst
   - `_includes/hook/bib.liquid`, qui affiche le `tag` en gras ;
   - `_layouts/bib.liquid` et `_layouts/about.liquid`, copies des fichiers du thème avec une seule modification chacune (« Abstract » au lieu de « Abs », et la section mentoring) ; après une mise à jour du thème, les recopier depuis la gem et refaire la modification ;
   - `_includes/mentoring.liquid`, la liste de mentoring ;
+  - `_plugins/post_folders.rb`, les notes en dossier : il publie les fichiers du dossier à côté de la note, et donne aux images seules sur leur ligne l'allure des figures du thème ;
   - `bin/publication_list.py`, la liste PDF ;
   - `_drafts/article-template.md` et le notebook `assets/jupyter/advection-demo.ipynb`, qui fabrique le GIF et la figure interactive du modèle ;
   - `.vscode/`, les réglages et snippets ;

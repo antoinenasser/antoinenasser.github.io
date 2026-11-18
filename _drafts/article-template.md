@@ -10,13 +10,22 @@ toc:
   sidebar: left
 ---
 
-This is the template for articles and how-tos. To write a new one:
+This is the template for articles and how-tos. To write a new one, give it its own folder in `_posts/`, with its files:
 
-1. Copy this file to `_posts/YYYY-MM-DD-short-title.md`. The page will be at `/blog/YYYY/short-title/`.
-2. Change the header above (title, date, description, tags) and replace the content.
-3. Put its images, GIFs and videos in `assets/img/posts/`, each with its own name: `map.png` and `map.gif` would clash.
+```text
+_posts/short-title/
+  YYYY-MM-DD-short-title.md   <- the article, at /blog/YYYY/short-title/
+  map.png                     <- its images, GIFs, videos, HTML figures
+```
 
-Files in `_drafts/` are only shown locally, with `./bin/serve --drafts`.
+1. Copy the header above (title, date, description, tags) into the article and change it.
+2. Point to the folder's files with relative paths: `![A map](map.png)`, the caption in italics on the next line.
+   An image alone on its line is shown like a figure (column width, zoom on click).
+3. `published: false` in the header keeps it offline; preview it with `./bin/serve --unpublished`.
+
+`_posts/article1-rice-paddies/` is a full example.
+The examples below use the shared folders under `assets/` instead, which still work.
+Files in `_drafts/` (like this one) are only shown locally, with `./bin/serve --drafts`.
 
 ## Text and links
 
