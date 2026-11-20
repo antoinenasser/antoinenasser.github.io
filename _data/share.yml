@@ -1,0 +1,22 @@
+# Share buttons at the end of each note (_includes/share_links.liquid), in this order.
+# icon: a Font Awesome class (https://fontawesome.com/search?ic=free)
+# url:  the network's share address; {url} and {title} become the note's address and title.
+# Delete an entry to drop its button. A "copy link" button always follows, and on
+# phones (and browsers that support it) a last button opens the system share menu.
+# Hide the row on one note with `share: false` in its front matter.
+
+- name: LinkedIn
+  icon: fa-brands fa-linkedin
+  url: "https://www.linkedin.com/sharing/share-offsite/?url={url}"
+
+- name: X
+  icon: fa-brands fa-x-twitter
+  url: "https://x.com/intent/tweet?url={url}&text={title}"
+
+- name: Bluesky
+  icon: fa-brands fa-bluesky
+  url: "https://bsky.app/intent/compose?text={title}%20{url}"
+
+- name: Email
+  icon: fa-solid fa-envelope
+  url: "mailto:?subject={title}&body={url}"

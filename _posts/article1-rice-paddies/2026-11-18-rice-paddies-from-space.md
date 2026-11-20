@@ -4,6 +4,7 @@ title: "Rice paddies from space: what the satellites see, and what they don't"
 date: 2026-11-18
 description: Sentinel-1 radar and Sentinel-2 optical imagery over a Mekong Delta rice district, and why radar alone can’t yet tell a flooded field from a dry one.
 tags: remote-sensing
+og_image: assets/article1/fig_01.2.png
 categories: notes
 related_posts: false
 toc:

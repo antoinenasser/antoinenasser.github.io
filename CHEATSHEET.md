@@ -46,6 +46,8 @@ Pour une petite correction sans ordinateur configuré : sur la page du repo GitH
 | Les couleurs des badges (JAMES, EGU, …)  | `_data/venues.yml`                                              |
 | Les notes / how-tos                      | `_posts/nom-court/`, un dossier par note                        |
 | Images, GIF, vidéos, figures d'une note  | dans le dossier de la note                                      |
+| Les boutons de partage sous les notes    | `_data/share.yml`                                               |
+| Le compteur de visites                   | `_config.yml`, `analytics:` (tableau de bord chez Cloudflare)   |
 | Notebooks Jupyter                        | `assets/jupyter/`                                               |
 | Les onglets et le texte des pages        | `_pages/`                                                       |
 | Nom du site, options générales           | `_config.yml` (redémarrer `./bin/serve` après une modification) |
@@ -212,6 +214,42 @@ Les widgets Python en direct (`ipywidgets`) ne peuvent pas tourner sur un site s
 
 Pour une note qui renvoie vers un article publié ailleurs (Medium, un blog de labo…), ajouter `redirect: https://...` dans l'en-tête : le titre dans l'onglet Notes mènera directement au lien.
 
+### Le partage des notes
+
+Sous chaque note, une ligne « Share » : LinkedIn, X, Bluesky, e-mail, copier le lien, et sur téléphone le menu de partage du système. Aucun script tiers : ce sont de simples liens.
+
+- Ajouter ou retirer un réseau : `_data/share.yml`.
+- Masquer la ligne sur une note : `share: false` dans son en-tête.
+- L'aperçu du lien (titre, description, image) quand on colle l'adresse dans LinkedIn, X, Slack… : le titre et la `description:` de l'en-tête, et l'image `og_image:`, un chemin relatif au dossier de la note comme pour les figures (`og_image: assets/article1/fig_01.2.png`). Une image carrée ou large, sans petit texte, rend le mieux. Sans `og_image:`, c'est la photo de profil (`og_image:` de `_config.yml`).
+- LinkedIn garde un aperçu en mémoire plusieurs jours. Après un changement d'image ou de titre, coller l'adresse dans https://www.linkedin.com/post-inspector/ pour le rafraîchir.
+
+### Les statistiques de visite
+
+Le compteur est invisible pour les visiteurs : le site envoie chaque page vue à Cloudflare Web Analytics, et les chiffres ne se voient que dans mon tableau de bord Cloudflare. Pas de cookie, donc pas de bandeau de consentement. Les visiteurs qui ont un bloqueur de pubs ne sont pas comptés : les chiffres sont un minimum.
+
+Mise en route (une fois) :
+
+1. Créer un compte gratuit sur https://dash.cloudflare.com/sign-up (pas besoin d'y mettre le domaine).
+2. Dans le tableau de bord, ouvrir **Web Analytics**, puis **Add a site**, et saisir `antoinenasser.github.io`. Le message « This hostname does not belong to any website on your Cloudflare account. You will need to install a JS Snippet » est normal : le site n'est pas hébergé chez Cloudflare, il envoie les visites par un petit script, que le thème ajoute lui-même à partir du token. Valider.
+3. Cloudflare montre un bout de code avec `"token": "…"`. Copier ce token (32 caractères) dans `_config.yml`, à la ligne `cloudflare:` sous `analytics:`, puis commit et push.
+
+Ensuite : **Web Analytics** → le site. On y voit les visites et pages vues par jour, les pages les plus lues (filtrer sur `/blog/` pour les notes), d'où viennent les visiteurs (LinkedIn, Google…), leur pays et leur appareil.
+
+`./bin/serve` coupe le compteur (`_config.dev.yml`) : l'aperçu local ne compte pas comme une visite. Mes propres visites du site en ligne, elles, comptent.
+
+### Être trouvé sur Google et Bing
+
+Le site est ouvert aux moteurs de recherche : `robots.txt` autorise tout, et `sitemap.xml` (fabriqué à chaque construction) leur donne la liste des pages. Chaque page dit aussi aux moteurs qui je suis (Schema.org, avec mes profils ORCID, Scholar, GitHub et LinkedIn de `_data/socials.yml`). Il reste à se déclarer, une fois :
+
+1. **Google Search Console** : https://search.google.com/search-console, **Ajouter une propriété**, choisir **Préfixe de l'URL** (pas « Domaine », impossible sur github.io) et saisir `https://antoinenasser.github.io/`.
+2. Méthode de validation **Balise HTML** : copier la valeur `content="…"` de la balise proposée dans `_config.yml`, ligne `google_site_verification:`. Commit, push, attendre la fin de la construction, puis **Valider**.
+3. Dans Search Console : **Sitemaps**, saisir `sitemap.xml`, **Envoyer**. Puis **Inspection de l'URL** sur la page d'accueil et **Demander une indexation**.
+4. **Bing Webmaster Tools** (https://www.bing.com/webmasters) : se connecter et choisir **Importer depuis Google Search Console**, sans autre code. Bing alimente aussi DuckDuckGo, Ecosia et Yahoo.
+
+Compter quelques jours à quelques semaines avant d'apparaître. Search Console montre ensuite les recherches qui mènent au site et les pages indexées.
+
+Ce qui aide le plus à sortir sur « Antoine Nasser » : des liens vers le site depuis mes profils (LinkedIn → coordonnées → site web, profil GitHub, Google Scholar → page d'accueil, ORCID → sites web).
+
 ### Une nouvelle page ou un nouvel onglet
 
 Créer `_pages/nom.md` :
@@ -249,6 +287,9 @@ Dans `_config.yml` (redémarrer `./bin/serve` après) :
 | `max_author_limit`        | nombre d'auteurs affichés avant « and N more authors »                |
 | `giscus`                  | commentaires sous les notes (via GitHub Discussions)                  |
 | `blog_name`, `blog_description` | titre et sous-titre de l'onglet Notes                           |
+| `analytics`               | le compteur de visites (voir « Les statistiques de visite »)          |
+| `serve_og_meta`, `og_image` | l'aperçu des liens partagés, et son image par défaut                |
+| `google_site_verification` | le code de Google Search Console (voir « Être trouvé sur Google et Bing ») |
 
 Dans `_pages/about.md` : `selected_papers` (publications sur l'accueil), `announcements` (la chronologie, `limit:` pour n'en montrer que N), `latest_posts` (les dernières notes sur l'accueil).
 
@@ -282,6 +323,9 @@ Les snippets du site (`.vscode/site.code-snippets`) : dans un fichier `.md`, tap
 | Une modification de `_config.yml` n'apparaît pas | arrêter (Ctrl+C) et relancer `./bin/serve`                                                  |
 | En local, les images des notes manquent toutes   | `./bin/serve` tournait déjà quand `_plugins/` a changé : l'arrêter (Ctrl+C) et le relancer  |
 | Le PDF des publications n'est pas à jour en local | relancer `./bin/serve`                                                                     |
+| Le tableau de bord Cloudflare reste vide         | le token est-il dans `_config.yml` et poussé ? Les visites locales ne comptent pas ; un bloqueur de pubs cache aussi mes propres visites |
+| L'aperçu LinkedIn montre l'ancienne image        | https://www.linkedin.com/post-inspector/ pour le rafraîchir                                 |
+| Search Console refuse la validation             | la construction est-elle finie (onglet **Actions**) ? Le code est-il dans `google_site_verification:`, sans guillemets ni balise autour ? |
 | `./bin/serve` échoue sur l'installation des gems | voir l'encadré ci-dessous                                                                   |
 
 Installation sur un nouveau Mac :
@@ -302,9 +346,11 @@ python3 -m venv .venv && .venv/bin/pip install nbconvert pybtex typst
 - **Ajouts propres à ce site** :
   - `_includes/profile_links.liquid`, les boutons de liens ;
   - `_includes/hook/bib.liquid`, qui affiche le `tag` en gras ;
-  - `_layouts/bib.liquid` et `_layouts/about.liquid`, copies des fichiers du thème avec une seule modification chacune (« Abstract » au lieu de « Abs », et la section mentoring) ; après une mise à jour du thème, les recopier depuis la gem et refaire la modification ;
+  - `_layouts/bib.liquid`, `_layouts/about.liquid` et `_layouts/post.liquid`, copies des fichiers du thème avec une seule modification chacune (« Abstract » au lieu de « Abs », la section mentoring, la ligne de partage) ; après une mise à jour du thème, les recopier depuis la gem et refaire la modification ;
+  - `_includes/share_links.liquid`, la ligne de partage sous les notes (réseaux dans `_data/share.yml`) ;
+  - `_config.dev.yml`, lu en plus de `_config.yml` par `./bin/serve` seulement, pour couper le compteur de visites en local ;
   - `_includes/mentoring.liquid`, la liste de mentoring ;
-  - `_plugins/post_folders.rb`, les notes en dossier : il publie les fichiers du dossier à côté de la note, et donne aux images seules sur leur ligne l'allure des figures du thème ;
+  - `_plugins/post_folders.rb`, les notes en dossier : il publie les fichiers du dossier à côté de la note, donne aux images seules sur leur ligne l'allure des figures du thème, et accepte un `og_image:` relatif ;
   - `bin/publication_list.py`, la liste PDF ;
   - `_drafts/article-template.md` et le notebook `assets/jupyter/advection-demo.ipynb`, qui fabrique le GIF et la figure interactive du modèle ;
   - `.vscode/`, les réglages et snippets ;

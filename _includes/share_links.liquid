@@ -1,0 +1,118 @@
+{% comment %}
+  Share row at the end of a note, included by _layouts/post.liquid for posts
+  (`share: false` in a note's front matter hides it). The networks come from
+  _data/share.yml. No third-party script: plain links, plus two buttons that only
+  use the browser (copy the address; open the system share menu where there is one).
+{% endcomment %}
+{% assign share_url = page.url | absolute_url %}
+{% assign share_url_param = share_url | url_encode %}
+{% comment %} url_encode writes spaces as "+", which mailto: keeps as a plus sign {% endcomment %}
+{% assign share_title_param = page.title | strip_html | url_encode | replace: '+', '%20' %}
+<div class="share-links d-print-none" role="group" aria-label="Share this note">
+  <span class="share-links-label">Share</span>
+  {% for network in site.data.share %}
+    {% assign share_href = network.url | replace: '{url}', share_url_param | replace: '{title}', share_title_param %}
+    <a
+      href="{{ share_href | escape }}"
+      {% unless share_href contains 'mailto:' %}
+        target="_blank" rel="noopener noreferrer"
+      {% endunless %}
+      title="{{ network.name }}"
+      aria-label="{{ network.name }}"
+    >
+      <i class="{{ network.icon }}" aria-hidden="true"></i>
+    </a>
+  {% endfor %}
+  <button type="button" class="share-copy" data-url="{{ share_url }}" title="Copy link" aria-label="Copy link">
+    <i class="fa-solid fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-check" aria-hidden="true" hidden></i>
+  </button>
+  <button
+    type="button"
+    class="share-native"
+    data-url="{{ share_url }}"
+    data-title="{{ page.title | strip_html | escape }}"
+    title="More"
+    aria-label="More sharing options"
+    hidden
+  >
+    <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+  </button>
+</div>
+
+<style>
+  .share-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 2.5rem 0 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--global-divider-color);
+  }
+  .share-links-label {
+    margin-right: 0.5rem;
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+  .share-links a,
+  .share-links button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: var(--global-text-color-light);
+    font-size: 1.15rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .share-links a:hover,
+  .share-links a:focus-visible,
+  .share-links button:hover,
+  .share-links button:focus-visible {
+    color: var(--global-theme-color);
+  }
+  .share-links [hidden] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  (function () {
+    var copy = document.querySelector(".share-links .share-copy");
+    var more = document.querySelector(".share-links .share-native");
+
+    if (copy && navigator.clipboard) {
+      var icons = copy.querySelectorAll("i");
+      copy.addEventListener("click", function () {
+        navigator.clipboard.writeText(copy.dataset.url).then(function () {
+          icons[0].hidden = true;
+          icons[1].hidden = false;
+          copy.title = "Link copied";
+          copy.setAttribute("aria-label", "Link copied");
+          setTimeout(function () {
+            icons[0].hidden = false;
+            icons[1].hidden = true;
+            copy.title = "Copy link";
+            copy.setAttribute("aria-label", "Copy link");
+          }, 2000);
+        });
+      });
+    } else if (copy) {
+      copy.hidden = true;
+    }
+
+    if (more && navigator.share) {
+      more.hidden = false;
+      more.addEventListener("click", function () {
+        navigator.share({ title: more.dataset.title, url: more.dataset.url }).catch(function () {});
+      });
+    }
+  })();
+</script>

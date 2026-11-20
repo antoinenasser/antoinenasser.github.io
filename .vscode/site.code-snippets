@@ -28,6 +28,7 @@
       "tags: ${3:how-to}",
       "categories: notes",
       "related_posts: false",
+      "og_image: ${4:file.png} # picture shown when the link is shared",
       "toc:",
       "  sidebar: left",
       "---",

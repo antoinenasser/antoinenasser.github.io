@@ -11,4 +11,5 @@ export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
 bundle check >/dev/null || bundle install
 # PDF list of publications and talks, rebuilt from the .bib files at each start
 python bin/publication_list.py || echo "Skipped the publication PDF (run: .venv/bin/pip install pybtex typst)"
-exec bundle exec jekyll serve --livereload "$@"
+# _config.dev.yml turns analytics off, so local previews are not counted as visits
+exec bundle exec jekyll serve --livereload --config _config.yml,_config.dev.yml "$@"

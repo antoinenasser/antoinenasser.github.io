@@ -1,0 +1,8 @@
+# Read after _config.yml by ./bin/serve only (the GitHub build does not use it).
+# Local previews must not count as visits: every analytics provider is off here.
+enable_google_analytics: false
+enable_cronitor_analytics: false
+enable_pirsch_analytics: false
+enable_openpanel_analytics: false
+enable_cloudflare_analytics: false
+enable_simple_analytics: false

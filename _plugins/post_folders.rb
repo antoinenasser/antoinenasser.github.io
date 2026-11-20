@@ -17,6 +17,8 @@
 #    it fits the column, is centered, rounded and shadowed, zooms on click and
 #    loads lazily. Images that already have a class are left alone, and so are
 #    images inside a link (badges).
+# 3. `og_image:` in a folder post's front matter (the picture shown when the link
+#    is shared) can be a relative path too: `og_image: assets/article1/fig_01.2.png`.
 #
 # One post per folder. Posts directly in _posts/ work as before.
 
@@ -50,6 +52,12 @@ module PostFolders
         folder_in_posts = folder.delete_prefix("#{posts_dir}/")
         # Relative links resolve against the page's folder: /blog/2026/name/
         page_dir = post.url.end_with?("/") ? post.url : File.dirname(post.url)
+
+        # The theme turns og_image into an absolute URL from the site root.
+        og_image = post.data["og_image"]
+        if og_image.is_a?(String) && !og_image.empty? && !og_image.start_with?("/") && !og_image.include?("://")
+          post.data["og_image"] = File.join(page_dir, og_image)
+        end
 
         # Same filtering as Jekyll's own reading of _posts/ (dotfiles, exclude, backups).
         site.reader.get_entries("_posts", folder_in_posts).each do |entry|
