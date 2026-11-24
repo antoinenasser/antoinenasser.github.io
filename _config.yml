@@ -297,6 +297,10 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  - scope:
+      path: "google38cace6aebe80061.html" # Google Search Console ownership file: keep it
+    values:
+      sitemap: false
 
 sass:
   style: compressed

@@ -242,7 +242,7 @@ Ensuite : **Web Analytics** → le site. On y voit les visites et pages vues par
 Le site est ouvert aux moteurs de recherche : `robots.txt` autorise tout, et `sitemap.xml` (fabriqué à chaque construction) leur donne la liste des pages. Chaque page dit aussi aux moteurs qui je suis (Schema.org, avec mes profils ORCID, Scholar, GitHub et LinkedIn de `_data/socials.yml`). Il reste à se déclarer, une fois :
 
 1. **Google Search Console** : https://search.google.com/search-console, **Ajouter une propriété**, choisir **Préfixe de l'URL** (pas « Domaine », impossible sur github.io) et saisir `https://antoinenasser.github.io/`.
-2. Méthode de validation **Balise HTML** : copier la valeur `content="…"` de la balise proposée dans `_config.yml`, ligne `google_site_verification:`. Commit, push, attendre la fin de la construction, puis **Valider**.
+2. Validation : c'est fait par le fichier `google38cace6aebe80061.html` à la racine du repo (méthode **Fichier HTML**). Ne pas le supprimer, sinon Google perd la preuve que le site est à moi. L'autre méthode, **Balise HTML**, passerait par la ligne `google_site_verification:` de `_config.yml`.
 3. Dans Search Console : **Sitemaps**, saisir `sitemap.xml`, **Envoyer**. Puis **Inspection de l'URL** sur la page d'accueil et **Demander une indexation**.
 4. **Bing Webmaster Tools** (https://www.bing.com/webmasters) : se connecter et choisir **Importer depuis Google Search Console**, sans autre code. Bing alimente aussi DuckDuckGo, Ecosia et Yahoo.
 
