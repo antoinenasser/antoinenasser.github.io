@@ -1,6 +1,6 @@
 ---
 ---
-{% comment %} Copy of the al_folio_core 1.0.15 bib layout; only change: the "Abs" button reads "Abstract". {% endcomment %}
+{% comment %} Copy of the al_folio_core 1.0.15 bib layout; changes: the "Abs" button reads "Abstract", and a badge without a link (venues.yml entry with no url) has white text like the linked ones. {% endcomment %}
 <div class="row">
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
@@ -19,7 +19,7 @@
             {% if site.data.venues[entry.abbr].url %}
               <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
             {% else %}
-              <div>{{- entry.abbr -}}</div>
+              <span style="color: #fff">{{- entry.abbr -}}</span>
             {% endif %}
           </abbr>
         {% else %}

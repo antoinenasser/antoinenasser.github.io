@@ -162,7 +162,7 @@ Même principe dans `_bibliography/talks.bib`, avec le type `@inproceedings` :
 
 - `slides = {mes_slides.pdf}` affiche un bouton vers `assets/pdf/mes_slides.pdf` (ou vers une adresse web).
 - `tag` s'affiche en gras à la fin de la ligne. J'utilise `Invited talk`, `Invited seminar`, `Contributed presentation` et `Laboratory seminar`. Le PDF range les talks en deux sections selon que le tag commence par « Invited » ou non.
-- Pas de travaux « en préparation » sur le site : un article y entre quand son preprint est en ligne.
+- Pas de travaux « en préparation » sur le site : un article y entre une fois soumis, avec `abbr = {Submitted}` et `journal = {Submitted to The Cryosphere}`. Quand son preprint est en ligne, ajouter le `doi`, passer le badge à `Preprint` (ou `arXiv`) et mettre la revue dans `tag`.
 
 ### Le mentoring
 
@@ -346,7 +346,7 @@ python3 -m venv .venv && .venv/bin/pip install nbconvert pybtex typst
 - **Ajouts propres à ce site** :
   - `_includes/profile_links.liquid`, les boutons de liens ;
   - `_includes/hook/bib.liquid`, qui affiche le `tag` en gras ;
-  - `_layouts/bib.liquid`, `_layouts/about.liquid` et `_layouts/post.liquid`, copies des fichiers du thème avec une seule modification chacune (« Abstract » au lieu de « Abs », la section mentoring, la ligne de partage) ; après une mise à jour du thème, les recopier depuis la gem et refaire la modification ;
+  - `_layouts/bib.liquid`, `_layouts/about.liquid` et `_layouts/post.liquid`, copies des fichiers du thème avec de petites modifications (« Abstract » au lieu de « Abs » et le texte blanc des badges sans lien, la section mentoring, la ligne de partage) ; après une mise à jour du thème, les recopier depuis la gem et refaire la modification ;
   - `_includes/share_links.liquid`, la ligne de partage sous les notes (réseaux dans `_data/share.yml`) ;
   - `_config.dev.yml`, lu en plus de `_config.yml` par `./bin/serve` seulement, pour couper le compteur de visites en local ;
   - `_includes/mentoring.liquid`, la liste de mentoring ;

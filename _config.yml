@@ -8,11 +8,11 @@ middle_name:
 last_name: Nasser
 contact_note: >
 description: >- # ">-" joins the lines until "footer_text:" and drops the final newline (it would break the Schema.org JSON)
-  Antoine Nasser, ocean modeller working on numerical methods and machine learning for climate models.
+  Antoine Nasser, research scientist in scientific machine learning and numerical methods for computational fluid dynamics, with applications to ocean and climate modeling.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: ocean modelling, numerical methods, machine learning, climate models, NEMO, ice shelves # add your own keywords or leave empty
+keywords: scientific machine learning, deep learning, numerical methods, computational fluid dynamics, ocean and climate modeling, NEMO, ice shelves # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🌊 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.

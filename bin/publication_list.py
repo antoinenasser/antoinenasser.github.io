@@ -86,7 +86,8 @@ def reference(entry):
 
 
 def is_peer_reviewed(entry):
-    return entry.type == "article" and "tag" not in entry.fields and "preprint" not in entry.fields.get("journal", "").lower()
+    journal = entry.fields.get("journal", "").lower()
+    return entry.type == "article" and "tag" not in entry.fields and "preprint" not in journal and "submitted" not in journal
 
 
 def sort_key(entry):

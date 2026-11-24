@@ -9,6 +9,8 @@
 
 "Preprint":
   color: "#5f6b7a"
+"Submitted":
+  color: "#5f6b7a"
 
 "PhD":
   color: "#2f7d4e"
